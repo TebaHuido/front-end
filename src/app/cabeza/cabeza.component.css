@@ -1,0 +1,44 @@
+h1{
+    color:#303880;
+}
+
+header{
+    background-color: #303880;
+    border-radius: 5px;
+}
+
+#imagen{
+    background: url(utalog.png);
+    width: 500px;
+    height: 100px;
+    background-size: 300px;
+    background-repeat: no-repeat;
+}
+#list{
+    color: white;
+}
+#btn{
+    color: #303880;
+    background-color: #DEB01F;
+}
+#send{
+    background-color: #303880;
+    color: white ;
+}
+
+#ejemplo_email_1{
+    width: 40%;
+}
+#ejemplo_password_1{
+    width: 40%;
+}
+#rellenar{
+    width: 40%;
+}
+label{
+    color: #303880 ;
+}
+
+body{
+    background-color: #DEB01F;
+}

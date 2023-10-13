@@ -1,0 +1,15 @@
+footer{
+    background-color: #303880;
+    border-radius: 5px;
+    color: white;
+}
+h3{
+    color: #CE9342;
+}
+#imag{
+    background: url(./utalog.png);
+    width: 300px;
+    height: 100px;
+    background-size: 300px;
+    background-repeat: no-repeat;
+}

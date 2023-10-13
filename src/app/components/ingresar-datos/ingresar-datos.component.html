@@ -1,0 +1,93 @@
+<div class="container mt-5 contform">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-body text-center mt-3">
+                    <span class="titulo">Ingresar Datos</span>
+                    <form class="mt-5" [formGroup]="egresadoForm" (ngSubmit)="ingresar()">
+                        <div class="mb-3">
+                            <div class="form-group row justify-content-sm-center">
+                                <span class="col-sm-2 "><i class="fa-solid fa-user icono"></i></span>
+                                <mat-form-field appearance="outline" class="col-sm-8" hideRequiredMarker="true" color="primary">
+                                    <mat-label>Nombre Completo</mat-label>
+                                    <input type="text" matInput placeholder="Ej. JUAN PEDRO PEREZ VERNAL" formControlName="nombre" [errorStateMatcher]="matcher">
+                                    <mat-error *ngIf="egresadoForm.controls['nombre'].hasError('required')">
+                                        El nombre completo es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group row justify-content-sm-center">
+                                <span class="col-sm-2 "><i class="fa-regular fa-envelope icono"></i></span>
+                                <mat-form-field appearance="outline" class="col-sm-8" hideRequiredMarker="true" color="primary">
+                                    <mat-label>Correo Electronico</mat-label>
+                                    <input type="email" matInput placeholder="Ej. pat@example.com" formControlName="correo" [errorStateMatcher]="matcher">
+                                    <mat-error *ngIf="egresadoForm.controls['correo'].hasError('email') && !egresadoForm.controls['correo'].hasError('required')">
+                                        Por favor ingrese un email valido
+                                    </mat-error>
+                                    <mat-error *ngIf="egresadoForm.controls['correo'].hasError('required')">
+                                        El email es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group row justify-content-sm-center">
+                                <span class="col-sm-2"><i class="fa-solid fa-calendar-days icono"></i></span>
+                                <mat-form-field appearance="outline" class="col-sm-8" hideRequiredMarker="true" color="primary">
+                                    <mat-label>Año Ingreso</mat-label>
+                                    <input type="number" matInput placeholder="Ej. 2019" formControlName="anio_ingreso" [errorStateMatcher]="matcher">
+                                    <mat-error *ngIf="egresadoForm.controls['anio_ingreso'].hasError('required')">
+                                        El año de ingreso es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group row justify-content-sm-center">
+                                <span class="col-sm-2"><i class="fa-solid fa-calendar-days icono"></i></span>
+                                <mat-form-field appearance="outline" class="col-sm-8" hideRequiredMarker="true" color="primary">
+                                    <mat-label>Año Titulación</mat-label>
+                                    <input type="number" matInput placeholder="Ej. 2019" formControlName="anio_titulacion" [errorStateMatcher]="matcher">
+                                    <mat-error *ngIf="egresadoForm.controls['anio_titulacion'].hasError('required')">
+                                        El año de titulación es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- EN ESTE CAMPO DE LAS CARRERAS SE RECUPERABA LA ID PARA MANDARSELO AL BACK, COMO NO HAY BACK
+                        Y ESPERANDO QUE SE VEA QUE FUNCIONA BIEN EL FRONT EN EL VALUE DE MAT OPTION SE CAMBIARA CARRERA ID POR 
+                        NOMBRE CARRERA -->
+                        <div class="mb-3">
+                            <div class="form-group row justify-content-sm-center">
+                                <span class="col-sm-2 "><i class="fa-solid fa-graduation-cap icono"></i></span>
+                                <mat-form-field appearance="outline" class="col-sm-8" hideRequiredMarker="true" color="primary">
+                                    <mat-label>Carrera</mat-label>
+                                    <mat-select formControlName="carrera" required>
+                                        <mat-option>--</mat-option>
+                                        <mat-option *ngFor="let carrera of carreras" [value]="carrera.nombre_carrera">
+                                          {{carrera.nombre_carrera}}
+                                        </mat-option>
+                                      </mat-select>
+                                    <mat-error *ngIf="egresadoForm.controls['carrera'].hasError('required')">
+                                        La carrera es <strong>requerida</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-4">
+                                <button class="btn btn-secondary btn-lg ms-1" routerLink="/lista-egresados">Volver</button>
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-4 ">
+                                <button class="btn btn-success btn-lg me-1" type="submit" [disabled]="!egresadoForm.valid">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
