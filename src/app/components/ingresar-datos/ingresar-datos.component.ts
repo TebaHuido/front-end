@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Persona } from 'src/app/interfaces/personas';
 import { ToastrService } from 'ngx-toastr';
 import { Carrera } from 'src/app/models/carrera.model';
-import { list_egresados } from '../lista-egresados/lista-egresados.component';
+//import { list_egresados } from '../lista-egresados/lista-egresados.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -49,7 +49,7 @@ export class IngresarDatosComponent {
       anio_titulacion: this.egresadoForm.get('anio_titulacion')?.value,
       carrera: this.egresadoForm.get('carrera')?.value,
     }
-    list_egresados.push(EGRESADO);
+    //list_egresados.push(EGRESADO);
 
     console.log(EGRESADO);
     this.toastr.success('Datos ingresados correctamente', 'Egresado Registrado!');

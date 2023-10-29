@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http'
 
 
-//Rutas
+//Rutas ... las rutas deberian estar en su propio modulo
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
