@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Persona } from 'src/app/interfaces/personas';
 import { ToastrService } from 'ngx-toastr';
 import { Carrera } from 'src/app/models/carrera.model';
+import { HttpClient } from '@angular/common/http';
 //import { list_egresados } from '../lista-egresados/lista-egresados.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -28,7 +29,12 @@ export class IngresarDatosComponent {
     {carrera_id: 333, nombre_carrera: 'LIC. EN INGLES INGRESO COMÚN'}
   ];
 
-  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService,
+    private httpClient: HttpClient
+    ) {
     this.egresadoForm = this.fb.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
@@ -48,11 +54,23 @@ export class IngresarDatosComponent {
       anio_ingreso: this.egresadoForm.get('anio_ingreso')?.value,
       anio_titulacion: this.egresadoForm.get('anio_titulacion')?.value,
       carrera: this.egresadoForm.get('carrera')?.value,
-    }
+    };
     //list_egresados.push(EGRESADO);
-
+    this.httpClient.post('http://localhost:3000/datos', EGRESADO).subscribe(
+      (response) => {
+        // Manejar la respuesta del middleware, por ejemplo, mostrar una confirmación al usuario.
+        console.log('Egresado creado con éxito:', response);
+        this.toastr.success('Datos ingresados correctamente', 'Egresado Registrado!');
+        this.router.navigate(['/lista-egresados']);
+      },
+      (error) => {
+        // Manejar errores, como mostrar un mensaje de error al usuario.
+        console.error('Error al crear el egresado:', error);
+      }
+    );
     console.log(EGRESADO);
     this.toastr.success('Datos ingresados correctamente', 'Egresado Registrado!');
-    this.router.navigate(['/lista-egresados'])
-  }
+    this.router.navigate(['/lista-egresados']);
+  };
+
 }

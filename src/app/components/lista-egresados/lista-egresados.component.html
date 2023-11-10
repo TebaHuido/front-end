@@ -1,5 +1,6 @@
 <mat-toolbar color = "primary">
     <span>Lista de egresados</span>
+    
 </mat-toolbar>
 
 <mat-card>
@@ -20,8 +21,8 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Año Ingreso </th>
             <td mat-cell *matCellDef="let element"> {{element.anio_ingreso}} </td>
         </ng-container>
-        <ng-container matColumnDef="anio_titulacion">
-            <th mat-header-cell *matHeaderCellDef> Año Titulacion </th>
+        <ng-container matColumnDef="anio_titulacion" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Año Titulacion </th>
             <td mat-cell *matCellDef="let element"> {{element.anio_titulacion}} </td>
         </ng-container>
       
